@@ -1,0 +1,56 @@
+<%- include("layouts/header"); -%>
+<%- include("layouts/nav"); -%>
+
+<form name="myform" method="Post" action="/request" >
+    <label>Full Name</label>
+    <input id="fullName" type="text" name="fullName" required><br/>
+
+    <label>Student ID</label>
+    <input id="studentID" type="text" name="studentID" required><br/>
+
+    <label>Email Address</label>
+    <input id="emailAddress" type="email" name="emailAddress" required><br/>
+
+    <label>Program Name</label>
+    <input id="programName" type="text" name="programName" required><br/>
+
+    <label>Service Type</label>
+    <select name="serviceType" id="serviceType" required>
+        <option value="">----- Select -----</option>
+        <option value="ID Card Replacement">ID Card Replacement</option>
+        <option value="Enrollment Letter">Enrollment Letter</option>
+        <option value="Timetable Help / Academic Support">Timetable Help / Academic Support</option>
+    </select><br/>
+
+    <label>Urgency Level</label>
+    <select name="urgencyLevel" id="urgencyLevel" required>
+        <option value="">----- Select -----</option>
+        <option value="Not Urgent">Not Urgent</option>
+        <option value="Urgent">Urgent</option>
+    </select><br/>
+
+    <label>Request Description</label>
+    <textarea id="requestDescription" name="requestDescription" required></textarea><br/>
+
+    <label>Preferred Contact Method</label>
+    <input type="radio" value="Call" id="radio1" name="preferredContactMethod" required>Call
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" value="Text" id="radio2" name="preferredContactMethod" required>Text
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" value="Email" id="radio3" name="preferredContactMethod" required>Email
+    <br/>
+
+    <br/><br/>
+
+    <input type="submit" value="Submit">
+    <p id="errors">
+      <% if(typeof(errors) != "undefined") { 
+        for(let error of errors) {%>
+          <h3><%= error.msg %></h3>
+
+      <%}}%>
+
+    </p>
+</form>
+
+<%- include("layouts/nav"); -%>
