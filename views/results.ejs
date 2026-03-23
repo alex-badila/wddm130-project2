@@ -1,1 +1,18 @@
+<%- include("layouts/header"); -%>
+<%- include("layouts/nav"); -%>
 
+<h2>Results</h2>
+<section>
+    <% if(typeof(results) !== "undefined"){%>
+      <p>Full Name: <%= results.fullName %></p>
+      <p>Student ID: <%= results.studentID %></p>
+      <p>Email Address: <%= results.emailAddress %></p>
+      <p>Program Name: <%= results.programName %></p>
+      <p>Service Type: <%= results.serviceType %></p>
+      <p>Request Description: <%= results.requestDescription %></p>
+      <p>Preferred Contact Method: <%= results.preferredContactMethod %></p>
+      <p>Response Time: <%= results.responseTime %></p>
+      <p>Fee: $<%= results.fee %></p>
+    <%}%>
+</section>
+<%- include("layouts/footer"); -%>

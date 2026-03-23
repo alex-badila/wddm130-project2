@@ -14,6 +14,10 @@ app.get("/", (req,res) => {
     res.render("home");
 });
 
+app.get("/about", (req,res) => {
+    res.render("about");
+});
+
 app.get("/request", (req,res) => {
     res.render("request");
 });
@@ -33,7 +37,88 @@ app.post("/request", [
 
     // If no errors found, display the results to the page
     if(errors.isEmpty()) {
-        
+        let fullName = req.body.fullName;
+        let studentID = req.body.studentID;
+        let emailAddress = req.body.emailAddress;
+        let programName = req.body.programName;
+        let serviceType = req.body.serviceType;
+        let urgencyLevel = req.body.urgencyLevel;
+        let requestDescription = req.body.requestDescription;
+        let preferredContactMethod = req.body.preferredContactMethod;
+        var preferredContactMethod_index = -1;
+        let tax, total;
+
+
+        for(var i = 0; i< preferredContactMethod.length; i++) {
+            if(preferredContactMethod[i].checked) {
+                preferredContactMethod_index = i; // storing the index that the user selected
+                break;
+            }
+        }
+
+        // Checking if any of the radio buttons was selected
+        if(preferredContactMethod_index > -1) {
+            preferredContactMethod = preferredContactMethod[preferredContactMethod_index].value;
+        }
+
+        // Check the service type and assign it a fee
+        let fee = 0;
+
+        if(serviceType === "ID Card Replacement") {
+            fee = 25;
+        }
+        else if(serviceType === "Enrollment Letter") {
+            fee = 10;
+        }
+        else {
+            fee = 0;
+        }
+
+        // Check the service type and urgency level and assign response time based on them
+        let responseTime = "";
+
+        if(serviceType === "ID Card Replacement") {
+            if(urgencyLevel === "Not Urgent") {
+                responseTime = "3-5 business days";
+            }
+            else {
+                responseTime = "1-2 business days";
+            }
+        }
+        else if(serviceType === "Enrollment Letter") {
+            if(urgencyLevel === "Not Urgent") {
+                responseTime = "2-3 business days";
+            }
+            else {
+                responseTime = "1 business day";
+            }
+        }
+        else {
+            if(urgencyLevel === "Not Urgent") {
+                responseTime = "1 business day";
+            }
+            else {
+                responseTime = "Same day";
+            }
+        }
+
+        // Put all the results into an object
+        let results = {
+            "fullName": fullName,
+            "studentID": studentID,
+            "emailAddress": emailAddress,
+            "programName": programName,
+            "serviceType": serviceType,
+            "urgencyLevel": urgencyLevel,
+            "requestDescription": requestDescription,
+            "preferredContactMethod": preferredContactMethod,
+            "fee": fee,
+            "responseTime": responseTime
+        }
+
+        // Send the object to the front end
+        res.render("results", {results: results});
+
     }
     // If errors found, display the errors to the page
     else {
