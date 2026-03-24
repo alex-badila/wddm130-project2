@@ -124,7 +124,7 @@ app.post("/request", [
     }
     // If errors found, display the errors to the page
     else {
-        res.render("request", {errors: errors.array()});
+        res.render("request", { errors: errors.array(), data: req.body });
     }
 });
 
