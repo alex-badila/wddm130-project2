@@ -10,18 +10,22 @@ app.use(express.static(__dirname + "/public"));
 
 app.set("view engine", "ejs");
 
+// Load the home page
 app.get("/", (req,res) => {
     res.render("home");
 });
 
+// Load the about page
 app.get("/about", (req,res) => {
     res.render("about");
 });
 
+// Load the request page
 app.get("/request", (req,res) => {
     res.render("request");
 });
 
+// Validate the form input
 app.post("/request", [
     check("fullName", "Full name is empty").notEmpty(),
     check("studentID", "Invalid student ID").matches(/^\d{3}-\d{3}-\d{4}$/),
@@ -45,11 +49,9 @@ app.post("/request", [
         let urgencyLevel = req.body.urgencyLevel;
         let requestDescription = req.body.requestDescription;
         let preferredContactMethod = req.body.preferredContactMethod;
-        var preferredContactMethod_index = -1;
-        let tax, total;
+        let preferredContactMethod_index = -1;
 
-
-        for(var i = 0; i< preferredContactMethod.length; i++) {
+        for(let i = 0; i< preferredContactMethod.length; i++) {
             if(preferredContactMethod[i].checked) {
                 preferredContactMethod_index = i; // storing the index that the user selected
                 break;

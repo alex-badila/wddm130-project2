@@ -1,0 +1,42 @@
+/* Basic reset to remove default margins and padding */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the navigation container */
+nav ul {
+    list-style-type: none; /* Removes bullet points */
+    background-color: #333;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the links within list items */
+nav ul li a {
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Style the header so that it matches the nav */
+header {
+    background-color: #333;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    padding: 10px 16px;
+}
+
+/* Style the footer so that it matches the header and nav */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
