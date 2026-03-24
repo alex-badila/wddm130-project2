@@ -40,3 +40,16 @@ footer {
     text-align: center;
 }
 
+/* Style the buttons */
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+.redButton {
+    background-color: red;
+}
+
+.blueButton {
+    background-color: blue;
+}
