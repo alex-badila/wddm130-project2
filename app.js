@@ -29,7 +29,7 @@ app.get("/request", (req,res) => {
 app.post("/request", [
     check("fullName", "Full name is empty").notEmpty(),
     check("studentID", "Invalid student ID").matches(/^\d{3}-\d{3}-\d{4}$/),
-    check("emailAddress", "Not a valid email").isEmail(),
+    check("emailAddress", "Not a valid email address").isEmail(),
     check("programName", "No program name").notEmpty(),
     check("serviceType", "Service type not selected").notEmpty(),
     check("urgencyLevel", "Urgency level not selected").notEmpty(),
@@ -72,8 +72,11 @@ app.post("/request", [
         else if(serviceType === "Enrollment Letter") {
             fee = 10;
         }
-        else {
+        else if(serviceType === "Timetable Help / Academic Support") {
             fee = 0;
+        }
+        else {
+            fee = "Invalid";
         }
 
         // Check the service type and urgency level and assign response time based on them
@@ -83,25 +86,37 @@ app.post("/request", [
             if(urgencyLevel === "Not Urgent") {
                 responseTime = "3-5 business days";
             }
-            else {
+            else if(urgencyLevel === "Urgent") {
                 responseTime = "1-2 business days";
+            }
+            else {
+                responseTime = "Invalid";
             }
         }
         else if(serviceType === "Enrollment Letter") {
             if(urgencyLevel === "Not Urgent") {
                 responseTime = "2-3 business days";
             }
-            else {
+            else if(urgencyLevel === "Urgent") {
                 responseTime = "1 business day";
             }
+            else {
+                responseTime = "Invalid";
+            }
         }
-        else {
+        else if(serviceType === "Timetable Help / Academic Support") {
             if(urgencyLevel === "Not Urgent") {
                 responseTime = "1 business day";
             }
-            else {
+            else if(urgencyLevel === "Urgent") {
                 responseTime = "Same day";
             }
+            else {
+                responseTime = "Invalid";
+            }
+        }
+        else {
+            responseTime = "Invalid";
         }
 
         // Put all the results into an object
