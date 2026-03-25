@@ -4,19 +4,19 @@
 <h2>Service Request</h2>
 <form name="myform" method="Post" action="/request" >
     <label>Full Name</label>
-    <input id="fullName" type="text" name="fullName" value="<%= typeof data !== 'undefined' ? data.fullName : '' %>" required><br/>
+    <input id="fullName" type="text" name="fullName" value="<%= typeof data !== 'undefined' ? data.fullName : '' %>"><br/>
 
     <label>Student ID</label>
-    <input id="studentID" type="text" name="studentID" value="<%= typeof data !== 'undefined' ? data.studentID : '' %>" required><br/>
+    <input id="studentID" type="text" name="studentID" value="<%= typeof data !== 'undefined' ? data.studentID : '' %>"d><br/>
 
     <label>Email Address</label>
-    <input id="emailAddress" type="email" name="emailAddress" value="<%= typeof data !== 'undefined' ? data.emailAddress : '' %>" required><br/>
+    <input id="emailAddress" type="text" name="emailAddress" value="<%= typeof data !== 'undefined' ? data.emailAddress : '' %>"><br/>
 
     <label>Program Name</label>
-    <input id="programName" type="text" name="programName" value="<%= typeof data !== 'undefined' ? data.programName : '' %>" required><br/>
+    <input id="programName" type="text" name="programName" value="<%= typeof data !== 'undefined' ? data.programName : '' %>"><br/>
 
     <label>Service Type</label>
-    <select name="serviceType" id="serviceType" required>
+    <select name="serviceType" id="serviceType">
         <option value="">----- Select -----</option>
         <option value="ID Card Replacement" <%= typeof data !== 'undefined' && data.serviceType === 'ID Card Replacement' ? 'selected' : '' %>>ID Card Replacement</option>
         <option value="Enrollment Letter" <%= typeof data !== 'undefined' && data.serviceType === 'Enrollment Letter' ? 'selected' : '' %>>Enrollment Letter</option>
@@ -24,21 +24,21 @@
     </select><br/>
 
     <label>Urgency Level</label>
-    <select name="urgencyLevel" id="urgencyLevel" required>
+    <select name="urgencyLevel" id="urgencyLevel">
         <option value="">----- Select -----</option>
         <option value="Not Urgent" <%= typeof data !== 'undefined' && data.urgencyLevel === 'Not Urgent' ? 'selected' : '' %>>Not Urgent</option>
         <option value="Urgent" <%= typeof data !== 'undefined' && data.urgencyLevel === 'Urgent' ? 'selected' : '' %>>Urgent</option>
     </select><br/>
 
     <label>Request Description</label>
-    <textarea id="requestDescription" name="requestDescription" required><%= typeof data !== 'undefined' ? data.requestDescription : '' %></textarea><br/>
+    <textarea id="requestDescription" name="requestDescription"><%= typeof data !== 'undefined' ? data.requestDescription : '' %></textarea><br/>
 
     <label>Preferred Contact Method</label>
-    <input type="radio" value="Call" id="radio1" name="preferredContactMethod" <%= typeof data !== 'undefined' && data.preferredContactMethod === 'Call' ? 'checked' : '' %> required>Call
+    <input type="radio" value="Call" id="radio1" name="preferredContactMethod" <%= typeof data !== 'undefined' && data.preferredContactMethod === 'Call' ? 'checked' : '' %>>Call
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="radio" value="Text" id="radio2" name="preferredContactMethod" <%= typeof data !== 'undefined' && data.preferredContactMethod === 'Text' ? 'checked' : '' %> required>Text
+    <input type="radio" value="Text" id="radio2" name="preferredContactMethod" <%= typeof data !== 'undefined' && data.preferredContactMethod === 'Text' ? 'checked' : '' %>>Text
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="radio" value="Email" id="radio3" name="preferredContactMethod" <%= typeof data !== 'undefined' && data.preferredContactMethod === 'Email' ? 'checked' : '' %> required>Email
+    <input type="radio" value="Email" id="radio3" name="preferredContactMethod" <%= typeof data !== 'undefined' && data.preferredContactMethod === 'Email' ? 'checked' : '' %>>Email
     <br/>
     <br/>
 
