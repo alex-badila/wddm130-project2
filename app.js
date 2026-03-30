@@ -51,23 +51,6 @@ app.post("/request", [
         let requestDescription = req.body.requestDescription;
         let preferredContactMethod = req.body.preferredContactMethod;
         let preferredContactMethod_index = -1;
-        let studentCardImage = req.files.studentCardImage;
-
-        // Manually check if a file was uploaded
-        if(!req.files || !req.files.studentCardImage) {
-            return res.render("request", { 
-                errors: [{ msg: "Student card image not uploaded" }], 
-                data: req.body 
-            });
-        }
-
-        let studentCardImageName = req.files.studentCardImage.name;
-
-        // Move the student card image into the public folder
-        let studentCardImagePath = "public/images/" + studentCardImageName;
-        studentCardImage.mv(studentCardImagePath, function(err) { 
-            console.log(err);
-        });
 
         for(let i = 0; i< preferredContactMethod.length; i++) {
             if(preferredContactMethod[i].checked) {
@@ -148,8 +131,7 @@ app.post("/request", [
             "requestDescription": requestDescription,
             "preferredContactMethod": preferredContactMethod,
             "fee": fee,
-            "responseTime": responseTime,
-            "studentCardImagePath": "images/" + studentCardImageName
+            "responseTime": responseTime
         }
 
         // Send the object to the front end
