@@ -2,7 +2,7 @@
 <%- include("layouts/nav"); -%>
 
 <h2>Service Request</h2>
-<form name="myform" method="Post" action="/request" >
+<form name="myform" method="Post" action="/request" enctype="multipart/form-data" >
     <label>Full Name</label>
     <input id="fullName" type="text" name="fullName" value="<%= typeof data !== 'undefined' ? data.fullName : '' %>"><br/>
 
@@ -39,6 +39,10 @@
     <input type="radio" value="Text" id="radio2" name="preferredContactMethod" <%= typeof data !== 'undefined' && data.preferredContactMethod === 'Text' ? 'checked' : '' %>>Text
     &nbsp;&nbsp;&nbsp;&nbsp;
     <input type="radio" value="Email" id="radio3" name="preferredContactMethod" <%= typeof data !== 'undefined' && data.preferredContactMethod === 'Email' ? 'checked' : '' %>>Email
+    <br/>
+
+    <label for="studentCardImage">Student Card Image Upload</label>
+    <input type="file" class="form-input" name="studentCardImage">
     <br/>
     <br/>
 

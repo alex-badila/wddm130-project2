@@ -15,6 +15,8 @@
       <p>Preferred Contact Method: <%= results.preferredContactMethod %></p>
       <p>Response Time: <%= results.responseTime %></p>
       <p>Fee: $<%= results.fee %></p>
+      <p>Student Card Image:</p>
+      <img src="/<%= results.studentCardImagePath %>"/>
     <%}%>
 </section>
 <%- include("layouts/footer"); -%>
